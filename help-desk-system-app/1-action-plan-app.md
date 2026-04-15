@@ -5,8 +5,8 @@ Instalar dependências principais: react-router-dom, axios, tailwindcss
 Instalar o plugin de PWA: vite-plugin-pwa
 Configurar estrutura de pastas do projeto
 
-
-🗂️ 4.2 — Estrutura de Pastas e Roteamento
+# FEITO
+-🗂️ 4.2 — Estrutura de Pastas e Roteamento
 
 Definir a estrutura (/pages, /components, /services, /hooks)
 Configurar o react-router-dom com as rotas principais:
@@ -14,10 +14,10 @@ Configurar o react-router-dom com as rotas principais:
 /tickets — listagem
 /tickets/novo — criar
 /tickets/:id — detalhe/editar
-/categorias — CRUD de categorias
-/usuarios — CRUD de usuários
+/categories — CRUD de categorias
+/users — CRUD de usuários
 
-
+# NAO FEITO
 🔌 4.3 — Camada de Serviços (API)
 
 Criar arquivo de configuração do axios com a baseURL da API
