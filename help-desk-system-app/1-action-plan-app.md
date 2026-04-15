@@ -17,7 +17,6 @@ Configurar o react-router-dom com as rotas principais:
 /categories — CRUD de categorias
 /users — CRUD de usuários
 
-# NAO FEITO
 🔌 4.3 — Camada de Serviços (API)
 
 Criar arquivo de configuração do axios com a baseURL da API
@@ -27,6 +26,8 @@ ticketService.js — getAll, getById, create, update, delete
 categoriaService.js
 usuarioService.js
 
+
+# NAO FEITO
 
 🎨 4.4 — Layout Base
 
