@@ -4,13 +4,11 @@ import { Outlet } from "react-router-dom";
 
 export default function Layout() {
   return (
-    <div className="flex">
+    <div className="d-flex" style={{ minHeight: "100vh" }}>
       <Sidebar />
-
-      <div className="flex-1">
+      <div className="flex-grow-1 d-flex flex-column">
         <Navbar />
-
-        <main className="p-6 bg-gray-50 min-h-screen">
+        <main className="p-4 bg-light flex-grow-1">
           <Outlet />
         </main>
       </div>

@@ -4,27 +4,31 @@ export default function Sidebar() {
   const { pathname } = useLocation();
 
   const linkClass = (path) =>
-    `block p-2 rounded ${
+    `nav-link rounded mb-1 ${
       pathname.startsWith(path)
-        ? "bg-blue-600 text-white"
-        : "text-gray-700 hover:bg-gray-200"
+        ? "active bg-primary text-white"
+        : "text-dark"
     }`;
 
   return (
-    <aside className="w-64 h-screen bg-gray-100 p-4">
-      <h2 className="text-xl font-bold mb-4">Help Desk</h2>
+    <aside
+      className="d-flex flex-column p-3 bg-dark"
+      style={{ width: "240px", minHeight: "100vh" }}
+    >
+      <h2 className="text-white fs-5 fw-bold mb-4 px-2">Help Desk</h2>
 
-      <nav className="space-y-2">
+      <nav className="nav flex-columnx">
         <Link to="/tickets" className={linkClass("/tickets")}>
-          Tickets
+        <h5 className="text-white">  Tickets</h5>
         </Link>
-
         <Link to="/categories" className={linkClass("/categories")}>
-          Categorias
+        <h5 className="text-white">Categorias</h5>
         </Link>
-
         <Link to="/users" className={linkClass("/users")}>
-          Usuários
+        <h5 className="text-white">Usuários</h5>
+        </Link>
+        <Link to="/tickets/novo" className={linkClass("/tickets/novo")}>
+        <h5 className="text-white">Abrir um chamado</h5>
         </Link>
       </nav>
     </aside>

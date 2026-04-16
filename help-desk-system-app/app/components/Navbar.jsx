@@ -1,7 +1,7 @@
 export default function Navbar() {
   return (
-    <header className="h-16 bg-white shadow flex items-center px-6">
-      <h1 className="text-lg font-semibold">Sistema de Chamados</h1>
+    <header className="navbar bg-white shadow-sm px-4" style={{ minHeight: "64px" }}>
+      <h1 className="navbar-brand mb-0 fs-5 fw-semibold">Sistema de Chamados</h1>
     </header>
   );
 }
