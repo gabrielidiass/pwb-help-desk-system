@@ -1,39 +1,4 @@
-📦 4.1 — Setup do Projeto
-
-Criar o projeto com Vite + React
-Instalar dependências principais: react-router-dom, axios, tailwindcss
-Instalar o plugin de PWA: vite-plugin-pwa
-Configurar estrutura de pastas do projeto
-
-# FEITO
--🗂️ 4.2 — Estrutura de Pastas e Roteamento
-
-Definir a estrutura (/pages, /components, /services, /hooks)
-Configurar o react-router-dom com as rotas principais:
-
-/tickets — listagem
-/tickets/novo — criar
-/tickets/:id — detalhe/editar
-/categories — CRUD de categorias
-/users — CRUD de usuários
-
 # NAO FEITO
-🔌 4.3 — Camada de Serviços (API)
-
-Criar arquivo de configuração do axios com a baseURL da API
-Criar um arquivo de serviço para cada entidade:
-
-ticketService.js — getAll, getById, create, update, delete
-categoriaService.js
-usuarioService.js
-
-
-🎨 4.4 — Layout Base
-
-Criar componente de Navbar/Sidebar com navegação entre as seções
-Criar componente de Layout que envolve todas as páginas
-Configurar Tailwind e definir identidade visual básica
-
 
 🎫 4.5 — Módulo de Tickets (core do sistema)
 Essa é a parte principal, dividida em:
@@ -72,3 +37,39 @@ Testar instalação no navegador (botão "Instalar app")
 Testar todos os CRUDs conectados à API real
 Verificar responsividade mobile
 Tratar erros de requisição (loading, mensagens de erro)
+
+# FEITO
+📦 4.1 — Setup do Projeto
+
+Criar o projeto com Vite + React
+Instalar dependências principais: react-router-dom, axios, tailwindcss
+Instalar o plugin de PWA: vite-plugin-pwa
+Configurar estrutura de pastas do projeto
+
+-🗂️ 4.2 — Estrutura de Pastas e Roteamento
+
+Definir a estrutura (/pages, /components, /services, /hooks)
+Configurar o react-router-dom com as rotas principais:
+
+/tickets — listagem
+/tickets/novo — criar
+/tickets/:id — detalhe/editar
+/categories — CRUD de categorias
+/users — CRUD de usuários
+
+🔌 4.3 — Camada de Serviços (API)
+
+Criar arquivo de configuração do axios com a baseURL da API
+Criar um arquivo de serviço para cada entidade:
+
+ticketService.js — getAll, getById, create, update, delete
+categoriaService.js
+usuarioService.js
+
+🎨 4.4 — Layout Base
+
+Criar componente de Navbar/Sidebar com navegação entre as seções
+Criar componente de Layout que envolve todas as páginas
+Configurar Tailwind e definir identidade visual básica
+
+
