@@ -1,4 +1,3 @@
-// src/models/Ticket.js
 import { DataTypes } from "sequelize";
 import sequelize from "../database/index.js";
 
@@ -28,4 +27,4 @@ const Ticket = sequelize.define("Ticket", {
     allowNull: true,
   },
 });
-
+export default Ticket;

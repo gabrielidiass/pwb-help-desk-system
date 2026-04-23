@@ -1,7 +1,4 @@
-import Ticket from "../models/Ticket.js";
-import Categoria from "../models/Categoria.js";
-import Dispositivo from "../models/Dispositivo.js";
-
+import { Ticket, Categoria, Dispositivo } from "../models/index.js";
 class TicketController {
   // 📌 Criar ticket
   static async criar(req, res) {
@@ -19,6 +16,8 @@ class TicketController {
         descricao,
         status,
         prioridade,
+        categoria_id,
+        dispositivo_id,
       });
 
       return res.status(201).json(ticket);

@@ -6,11 +6,11 @@ const Dispositivo = sequelize.define("Dispositivo", {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  descricao: {
+  tipo: {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  marca: {
+  status: {
     type: DataTypes.STRING,
     allowNull: false,
   },
