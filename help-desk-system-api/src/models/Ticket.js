@@ -19,5 +19,13 @@ const Ticket = sequelize.define("Ticket", {
     type: DataTypes.ENUM("baixa", "média", "alta", "crítica"),
     defaultValue: "média",
   },
+  categoria_id: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  },
+  dispositivo_id: {
+    type: DataTypes.INTEGER,
+    allowNull: true,
+  },
 });
 
