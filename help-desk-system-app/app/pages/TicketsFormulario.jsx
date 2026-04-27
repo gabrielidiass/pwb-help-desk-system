@@ -1,18 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
-const CATEGORIAS_MOCK = [
-  { id: 1, nome: "Infraestrutura" },
-  { id: 2, nome: "Software" },
-  { id: 3, nome: "Hardware" },
-];
-
-const USUARIOS_MOCK = [
-  { id: 1, nome: "Ana Silva" },
-  { id: 2, nome: "Carlos Souza" },
-  { id: 3, nome: "Maria Oliveira" },
-];
-
 const PRIORIDADES = ["Baixa", "Média", "Alta", "Crítica"];
 const STATUS = ["Aberto", "Em andamento", "Resolvido", "Fechado"];
 
@@ -26,7 +14,6 @@ export default function TicketForm() {
     categoriaId: "",
     prioridade: "",
     status: "Aberto",
-    atribuidoId: "",
   });
 
   const [errors, setErrors] = useState({});
@@ -44,7 +31,6 @@ export default function TicketForm() {
     if (!form.titulo.trim()) erros.titulo = "Título é obrigatório.";
     if (!form.categoriaId) erros.categoriaId = "Selecione uma categoria.";
     if (!form.prioridade) erros.prioridade = "Selecione uma prioridade.";
-    if (!form.atribuidoId) erros.atribuidoId = "Selecione um responsável.";
     return erros;
   };
 
@@ -163,24 +149,6 @@ export default function TicketForm() {
                   </div>
                 </div>
 
-                {/* Atribuído */}
-                <div className="mb-4">
-                  <label className="form-label fw-medium">Atribuído a</label>
-                  <select
-                    name="atribuidoId"
-                    className={`form-select ${errors.atribuidoId ? "is-invalid" : ""}`}
-                    value={form.atribuidoId}
-                    onChange={handleChange}
-                  >
-                    <option value="">Selecione um responsável...</option>
-                    {USUARIOS_MOCK.map((u) => (
-                      <option key={u.id} value={u.id}>{u.nome}</option>
-                    ))}
-                  </select>
-                  {errors.atribuidoId && (
-                    <div className="invalid-feedback">{errors.atribuidoId}</div>
-                  )}
-                </div>
 
                 {/* Botões */}
                 <div className="d-flex gap-2">

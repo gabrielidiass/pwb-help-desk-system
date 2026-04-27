@@ -21,11 +21,11 @@ export default function Sidebar() {
         <Link to="/tickets" className={linkClass("/tickets")}>
         <h5 className="text-white">  Tickets</h5>
         </Link>
-        <Link to="/categories" className={linkClass("/categories")}>
+        <Link to="/categorias" className={linkClass("/categorias")}>
         <h5 className="text-white">Categorias</h5>
         </Link>
-        <Link to="/users" className={linkClass("/users")}>
-        <h5 className="text-white">Usuários</h5>
+        <Link to="/dispositivos" className={linkClass("/dispositivos")}>
+        <h5 className="text-white">Dispositivos</h5>
         </Link>
         <Link to="/tickets/novo" className={linkClass("/tickets/novo")}>
         <h5 className="text-white">Abrir um chamado</h5>

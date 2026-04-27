@@ -2,8 +2,10 @@
 import express from "express";
 import sequelize from "./src/database/index.js";
 import routes from "./src/routes.js";
+import cors from "cors";
 
 const app = express();
+app.use(cors()); 
 app.use(express.json()); // permite receber JSON no body
 app.use(routes);
 
