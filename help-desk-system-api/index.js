@@ -1,7 +1,7 @@
 // index.js
 import express from "express";
-import sequelize from "./database/index.js";
-import routes from "./routes.js";
+import sequelize from "./src/database/index.js";
+import routes from "./src/routes.js";
 import cors from "cors";
 
 const app = express();
