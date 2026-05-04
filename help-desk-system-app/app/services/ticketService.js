@@ -14,7 +14,7 @@ export const getTicketById = async (id) => {
 
 // Criar
 export const createTicket = async (data) => {
-  const response = await api.post("/tickets", data);
+  const response = await api.post("/tickets/", data);
   return response.data;
 };
 

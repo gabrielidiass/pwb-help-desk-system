@@ -14,8 +14,9 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Navigate to="/tickets" />} />
         <Route element={<Layout />}>
-          <Route path="/tickets" element={<Tickets/>} />
+          <Route path="/tickets" element={<Tickets />} />
           <Route path="/tickets/novo" element={<TicketsFormulario />} />
+          <Route path="/tickets/:id" element={<TicketsFormulario />} />
           <Route path="/categorias" element={<Categorias />} />
           <Route path="/dispositivos" element={<Dispositivos />} />
         </Route>

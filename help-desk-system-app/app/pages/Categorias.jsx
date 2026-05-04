@@ -40,7 +40,7 @@ export default function Categorias() {
         </div>
         <button
           className="btn btn-primary"
-          onClick={() => navigate("/categorias/nova")}
+          onClick={() => navigate("/categorias/")}
         >
           + Nova categoria
         </button>
@@ -94,7 +94,7 @@ export default function Categorias() {
                       <div className="d-flex gap-2">
                         <button
                           className="btn btn-sm btn-outline-secondary"
-                          onClick={() => navigate(`/categorias/${c.id}/editar`)}
+                          onClick={() => navigate(`/categorias/${c.id}`)}
                         >
                           Editar
                         </button>

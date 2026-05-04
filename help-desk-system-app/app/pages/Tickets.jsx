@@ -1,20 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { getTickets } from "../services/ticketService";
-
-const BADGE_PRIORIDADE = {
-  Baixa: "success",
-  Média: "warning",
-  Alta: "danger",
-  Crítica: "dark",
-};
-
-const BADGE_STATUS = {
-  Aberto: "primary",
-  "Em andamento": "warning",
-  Resolvido: "success",
-  Fechado: "secondary",
-};
+import { getTickets, deleteTicket } from "../services/ticketService";
 
 export default function Tickets() {
   const navigate = useNavigate();
@@ -33,7 +19,7 @@ export default function Tickets() {
 
   const handleDelete = (id) => {
     if (!confirm("Deseja excluir este ticket?")) return;
-    // futuramente: deleteTicket(id)
+    deleteTicket(id)
     setTickets((prev) => prev.filter((t) => t.id !== id));
   };
 
@@ -130,7 +116,9 @@ export default function Tickets() {
                 <tr>
                   <th>#</th>
                   <th>Título</th>
+                  <th>Descrição</th>
                   <th>Categoria</th>
+                  <th>Dispositivo</th>
                   <th>Prioridade</th>
                   <th>Status</th>
                   <th>Ações</th>
@@ -141,7 +129,8 @@ export default function Tickets() {
                   <tr key={t.id}>
                     <td className="text-muted">{t.id}</td>
                     <td className="fw-medium">{t.titulo}</td>
-                    <td>{t.Categoria?.nome || "—"}</td>
+                    <td>{t.descricao}</td>
+                    <td>{t.Categorium?.nome || "—"}</td>
                     <td>{t.Dispositivo?.nome || "—"}</td>
                     <td>{t.prioridade}</td>
                     <td>{t.status}</td>
@@ -149,7 +138,7 @@ export default function Tickets() {
                       <div className="d-flex gap-2">
                         <button
                           className="btn btn-sm btn-outline-secondary"
-                          onClick={() => navigate(`/tickets/${t.id}/editar`)}
+                          onClick={() => navigate(`/tickets/${t.id}`)}
                         >
                           Editar
                         </button>

@@ -1,5 +1,12 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import {
+  getTicketById,
+  createTicket,
+  updateTicket,
+} from "../services/ticketService";
+import { getCategorias } from "../services/categoriaService";
+import { getDispositivos } from "../services/dispositivoService";
 
 const PRIORIDADES = ["Baixa", "Média", "Alta", "Crítica"];
 const STATUS = ["Aberto", "Em andamento", "Resolvido", "Fechado"];
@@ -11,25 +18,45 @@ export default function TicketForm() {
 
   const [form, setForm] = useState({
     titulo: "",
-    categoriaId: "",
+    descricao: "",
+    categoria_id: "",
     prioridade: "",
     status: "Aberto",
   });
 
+  const [categorias, setCategorias] = useState([]);
+  const [dispositivos, setDispositivos] = useState([]);
   const [errors, setErrors] = useState({});
   const [submitting, setSubmitting] = useState(false);
 
   useEffect(() => {
-    if (isEditing) {
-      // futuramente: buscar ticket por id na API
-      // por ora deixa o form vazio
-    }
-  }, [id]);
+    const loadData = async () => {
+      const cats = await getCategorias();
+      setCategorias(cats);
+
+      const devs = await getDispositivos();
+      setDispositivos(devs);
+
+      if (isEditing) {
+        const data = await getTicketById(id);
+        setForm({
+          titulo: data.titulo || "",
+          descricao: data.descricao || "",
+          dispositivo_id: data.dispositivo_id || "",
+          prioridade: data.prioridade || "",
+          status: data.status || "Aberto",
+        });
+      }
+    };
+
+    loadData();
+  }, [id, isEditing]);
 
   const validate = () => {
     const erros = {};
     if (!form.titulo.trim()) erros.titulo = "Título é obrigatório.";
-    if (!form.categoriaId) erros.categoriaId = "Selecione uma categoria.";
+    if (!form.descricao.trim()) erros.descricao = "Descrição é obrigatória.";
+    if (!form.dispositivo_id) erros.dispositivo_id = "Selecione um dispositivo.";
     if (!form.prioridade) erros.prioridade = "Selecione uma prioridade.";
     return erros;
   };
@@ -50,8 +77,11 @@ export default function TicketForm() {
 
     setSubmitting(true);
     try {
-      // futuramente: chamar ticketService.create(form) ou ticketService.update(id, form)
-      console.log(isEditing ? "Editando:" : "Criando:", form);
+      if (isEditing) {
+        await updateTicket(id, form);
+      } else {
+        await createTicket(form);
+      }
       navigate("/tickets");
     } catch (err) {
       console.error(err);
@@ -68,7 +98,9 @@ export default function TicketForm() {
             {isEditing ? `Editando ticket #${id}` : "Novo ticket"}
           </h2>
           <p className="text-muted mb-0">
-            {isEditing ? "Atualize os dados do ticket." : "Preencha os dados para abrir um chamado."}
+            {isEditing
+              ? "Atualize os dados do ticket."
+              : "Preencha os dados para abrir um chamado."}
           </p>
         </div>
       </div>
@@ -78,8 +110,6 @@ export default function TicketForm() {
           <div className="card shadow-sm">
             <div className="card-body p-4">
               <form onSubmit={handleSubmit} noValidate>
-
-                {/* Título */}
                 <div className="mb-3">
                   <label className="form-label fw-medium">Título</label>
                   <input
@@ -94,27 +124,61 @@ export default function TicketForm() {
                     <div className="invalid-feedback">{errors.titulo}</div>
                   )}
                 </div>
-
-                {/* Categoria */}
                 <div className="mb-3">
-                  <label className="form-label fw-medium">Categoria</label>
-                  <select
-                    name="categoriaId"
-                    className={`form-select ${errors.categoriaId ? "is-invalid" : ""}`}
-                    value={form.categoriaId}
+                  <label className="form-label fw-medium">Descrição</label>
+                  <input
+                    type="text"
+                    name="descricao"
+                    className={`form-control ${errors.descricao ? "is-invalid" : ""}`}
+                    placeholder="Descreva o problema em detalhes"
+                    value={form.descricao}
                     onChange={handleChange}
-                  >
-                    <option value="">Selecione...</option>
-                    {CATEGORIAS_MOCK.map((c) => (
-                      <option key={c.id} value={c.id}>{c.nome}</option>
-                    ))}
-                  </select>
-                  {errors.categoriaId && (
-                    <div className="invalid-feedback">{errors.categoriaId}</div>
+                  />
+                  {errors.descricao && (
+                    <div className="invalid-feedback">{errors.descricao}</div>
                   )}
                 </div>
 
-                {/* Prioridade + Status lado a lado */}
+                <div className="mb-3">
+                  <label className="form-label fw-medium">Categoria</label>
+                  <select
+                    name="categoria_id"
+                    className={`form-select ${errors.categoria_id ? "is-invalid" : ""}`}
+                    value={form.Categoria}
+                    onChange={handleChange}
+                  >
+                    <option value="">Selecione...</option>
+                    {categorias.map((c) => (
+                      <option key={c.id} value={c.id}>
+                        {c.nome}
+                      </option>
+                    ))}
+                  </select>
+                  {errors.categoria_id && (
+                    <div className="invalid-feedback">{errors.categoria_id}</div>
+                  )}
+                </div>
+
+                <div className="mb-3">
+                  <label className="form-label fw-medium">Dispositivo</label>
+                  <select
+                    name="dispositivo_id"
+                    className={`form-select ${errors.dispositivo_id ? "is-invalid" : ""}`}
+                    value={form.dispositivo_id}
+                    onChange={handleChange}
+                  >
+                    <option value="">Selecione...</option>
+                    {dispositivos.map((d) => (
+                      <option key={d.id} value={d.id}>
+                        {d.nome}
+                      </option>
+                    ))}
+                  </select>
+                  {errors.dispositivo_id && (
+                    <div className="invalid-feedback">{errors.dispositivo_id}</div>
+                  )}
+                </div>
+
                 <div className="row mb-3">
                   <div className="col-md-6">
                     <label className="form-label fw-medium">Prioridade</label>
@@ -126,11 +190,15 @@ export default function TicketForm() {
                     >
                       <option value="">Selecione...</option>
                       {PRIORIDADES.map((p) => (
-                        <option key={p} value={p}>{p}</option>
+                        <option key={p} value={p}>
+                          {p}
+                        </option>
                       ))}
                     </select>
                     {errors.prioridade && (
-                      <div className="invalid-feedback">{errors.prioridade}</div>
+                      <div className="invalid-feedback">
+                        {errors.prioridade}
+                      </div>
                     )}
                   </div>
 
@@ -143,14 +211,14 @@ export default function TicketForm() {
                       onChange={handleChange}
                     >
                       {STATUS.map((s) => (
-                        <option key={s} value={s}>{s}</option>
+                        <option key={s} value={s}>
+                          {s}
+                        </option>
                       ))}
                     </select>
                   </div>
                 </div>
 
-
-                {/* Botões */}
                 <div className="d-flex gap-2">
                   <button
                     type="submit"
@@ -159,7 +227,9 @@ export default function TicketForm() {
                   >
                     {submitting
                       ? "Salvando..."
-                      : isEditing ? "Salvar alterações" : "Criar ticket"}
+                      : isEditing
+                        ? "Salvar alterações"
+                        : "Criar ticket"}
                   </button>
                   <button
                     type="button"
@@ -169,7 +239,6 @@ export default function TicketForm() {
                     Cancelar
                   </button>
                 </div>
-
               </form>
             </div>
           </div>

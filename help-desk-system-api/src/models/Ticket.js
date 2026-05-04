@@ -11,12 +11,12 @@ const Ticket = sequelize.define("Ticket", {
     allowNull: false,
   },
   status: {
-    type: DataTypes.ENUM("aberto", "andamento", "resolvido", "fechado"),
-    defaultValue: "aberto",
+    type: DataTypes.ENUM("Aberto", "Em andamento", "Resolvido", "Fechado"),
+    defaultValue: "Aberto",
   },
   prioridade: {
-    type: DataTypes.ENUM("baixa", "média", "alta", "crítica"),
-    defaultValue: "média",
+    type: DataTypes.ENUM("Baixa", "Média", "Alta", "Crítica"),
+    defaultValue: "Média",
   },
   categoria_id: {
     type: DataTypes.INTEGER,

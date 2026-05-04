@@ -1,39 +1,43 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { getDispositivos } from "../services/dispositivoService";
 
 export default function Dispositivos() {
   const navigate = useNavigate();
+
   const [dispositivos, setDispositivos] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [filtroStatus, setFiltroStatus] = useState("");
-  const [filtroPrioridade, setFiltroPrioridade] = useState("");
   const [busca, setBusca] = useState("");
 
   useEffect(() => {
-    // futuramente: substituir por getTickets() do ticketService
-    setTimeout(() => {
-      setLoading(false);
-    }, 400);
+    const fetchDispositivos = async () => {
+      try {
+        const data = await getDispositivos();
+        setDispositivos(data);
+      } catch (error) {
+        console.error("Erro ao carregar dispositivos:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchDispositivos();
   }, []);
 
   const handleDelete = (id) => {
-    if (!confirm("Deseja excluir este dispositivo?")) return;
-    // futuramente: deleteDispositivo(id)
+    if (!window.confirm("Deseja excluir este dispositivo?")) return;
+
+    // aqui depois você pode integrar com API
     setDispositivos((prev) => prev.filter((d) => d.id !== id));
   };
 
-  const dispositivosFiltrados = dispositivos.filter((d) => {
-    const matchStatus = filtroStatus ? d.status === filtroStatus : true;
-    const matchPrioridade = filtroPrioridade
-      ? d.prioridade === filtroPrioridade
-      : true;
-    const matchBusca = d.titulo.toLowerCase().includes(busca.toLowerCase());
-    return matchStatus && matchPrioridade && matchBusca;
-  });
+  const dispositivosFiltrados = dispositivos.filter((d) =>
+    d.nome.toLowerCase().includes(busca.toLowerCase())
+  );
 
   return (
     <div className="container-fluid">
-      {/* Cabeçalho */}
+      {/* Header */}
       <div className="d-flex justify-content-between align-items-center mb-4">
         <div>
           <h2 className="fw-semibold mb-0">Dispositivos</h2>
@@ -41,6 +45,7 @@ export default function Dispositivos() {
             {dispositivos.length} dispositivos no total
           </p>
         </div>
+
         <button
           className="btn btn-primary"
           onClick={() => navigate("/dispositivos/novo")}
@@ -49,51 +54,22 @@ export default function Dispositivos() {
         </button>
       </div>
 
-      {/* Filtros */}
+      {/* Busca */}
       <div className="row g-2 mb-3">
-        <div className="col-md-5">
+        <div className="col-md-11">
           <input
             type="text"
             className="form-control"
-            placeholder="Buscar por título..."
+            placeholder="Buscar por nome..."
             value={busca}
             onChange={(e) => setBusca(e.target.value)}
           />
         </div>
-        <div className="col-md-3">
-          <select
-            className="form-select"
-            value={filtroStatus}
-            onChange={(e) => setFiltroStatus(e.target.value)}
-          >
-            <option value="">Todos os status</option>
-            <option>Aberto</option>
-            <option>Em andamento</option>
-            <option>Resolvido</option>
-            <option>Fechado</option>
-          </select>
-        </div>
-        <div className="col-md-3">
-          <select
-            className="form-select"
-            value={filtroPrioridade}
-            onChange={(e) => setFiltroPrioridade(e.target.value)}
-          >
-            <option value="">Todas as prioridades</option>
-            <option>Baixa</option>
-            <option>Média</option>
-            <option>Alta</option>
-            <option>Crítica</option>
-          </select>
-        </div>
+
         <div className="col-md-1">
           <button
             className="btn btn-outline-secondary w-100"
-            onClick={() => {
-              setBusca("");
-              setFiltroStatus("");
-              setFiltroPrioridade("");
-            }}
+            onClick={() => setBusca("")}
           >
             Limpar
           </button>
@@ -116,31 +92,32 @@ export default function Dispositivos() {
               <thead className="table-light">
                 <tr>
                   <th>#</th>
-                  <th>Título</th>
-                  <th>Categoria</th>
-                  <th>Prioridade</th>
+                  <th>Nome</th>
+                  <th>Tipo</th>
                   <th>Status</th>
                   <th>Ações</th>
                 </tr>
               </thead>
+
               <tbody>
                 {dispositivosFiltrados.map((d) => (
                   <tr key={d.id}>
                     <td className="text-muted">{d.id}</td>
-                    <td className="fw-medium">{d.titulo}</td>
-                    <td>{d.categoria}</td>
-                    <td>{d.prioridade}</td>
+                    <td className="fw-medium">{d.nome}</td>
+                    <td>{d.tipo}</td>
                     <td>{d.status}</td>
+
                     <td>
                       <div className="d-flex gap-2">
                         <button
                           className="btn btn-sm btn-outline-secondary"
                           onClick={() =>
-                            navigate(`/dispositivos/${d.id}/editar`)
+                            navigate(`/dispositivos/${d.id}`)
                           }
                         >
                           Editar
                         </button>
+
                         <button
                           className="btn btn-sm btn-outline-danger"
                           onClick={() => handleDelete(d.id)}
