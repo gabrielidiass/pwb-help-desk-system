@@ -99,7 +99,7 @@ export default function DispositivoForm() {
           <button
             type="button"
             className="btn btn-secondary"
-            onClick={() => navigate("/dispositivos")}
+            onClick={() => navigate("/dispositivo")}
           >
             Cancelar
           </button>
