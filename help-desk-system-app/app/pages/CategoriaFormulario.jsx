@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { getCategoriaById, createCategoria, updateCategoria } from "../services/categoriaService";
 
-export default function CategoriasFormulario() {
+export default function CategoriaFormulario() {
   const { id } = useParams();
   const navigate = useNavigate();
   const isEditing = Boolean(id);

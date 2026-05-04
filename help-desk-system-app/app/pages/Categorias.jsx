@@ -40,7 +40,7 @@ export default function Categorias() {
         </div>
         <button
           className="btn btn-primary"
-          onClick={() => navigate("/categorias/")}
+          onClick={() => navigate("/categorias/novo")}
         >
           + Nova categoria
         </button>

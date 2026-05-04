@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Layout from "./components/Layout";
 import Tickets from "./pages/Tickets";
 import TicketsFormulario from "./pages/TicketsFormulario";
-import CategoriasFormulario from "./pages/CategoriasFormulario";
+import CategoriaFormulario from "./pages/CategoriaFormulario";
 import DispositivoFormulario from "./pages/DispositivoFormulario";
 import Categorias from "./pages/Categorias";
 import Dispositivos from "./pages/Dispositivos";
@@ -21,8 +21,8 @@ export default function App() {
           <Route path="/tickets/:id" element={<TicketsFormulario />} />
 
           <Route path="/categorias" element={<Categorias />} />
-          <Route path="/categorias/:id" element={<CategoriasFormulario />} /> 
-          <Route path="/categorias/novo" element={<CategoriasFormulario />} />
+          <Route path="/categorias/:id" element={<CategoriaFormulario />} /> 
+          <Route path="/categorias/novo" element={<CategoriaFormulario />} />
 
           <Route path="/dispositivos" element={<Dispositivos />} />
           <Route path="/dispositivos/:id" element={<DispositivoFormulario />} />
