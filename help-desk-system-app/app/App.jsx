@@ -6,10 +6,12 @@ import CategoriaFormulario from "./pages/CategoriaFormulario";
 import DispositivoFormulario from "./pages/DispositivoFormulario";
 import Categorias from "./pages/Categorias";
 import Dispositivos from "./pages/Dispositivos";
+import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import cors from "cors";
 
 //app.use(cors());
 
+serviceWorkerRegistration.register();
 export default function App() {
   return (
     <BrowserRouter>

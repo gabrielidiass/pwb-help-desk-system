@@ -4,4 +4,5 @@ const sequelize = new Sequelize("help_desk_system", "postgres", "postgres", {
   dialect: "postgres",
   logging: false,
 });
+
 export default sequelize;
