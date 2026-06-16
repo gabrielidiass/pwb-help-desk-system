@@ -19,7 +19,7 @@ router.put("/dispositivos/:id", verificaJWT, DispositivoController.atualizar);
 router.delete("/dispositivos/:id", verificaJWT, DispositivoController.deletar);
 
 router.post("/tickets", TicketController.criar);
-router.get("/tickets",j verificaJWT, TicketController.listar);
+router.get("/tickets", verificaJWT, TicketController.listar);
 router.get("/tickets/:id", verificaJWT, TicketController.buscarPorId);
 router.put("/tickets/:id", verificaJWT, TicketController.atualizar);
 router.delete("/tickets/:id", verificaJWT, TicketController.deletar);
