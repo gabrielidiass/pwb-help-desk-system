@@ -1,6 +1,10 @@
-import { useEffect, useState } from "react";
+import WithAuth from "../../../seguranca/WithAuth";
+ from "react";
 import { useNavigate } from "react-router-dom";
 import { getDispositivos } from "../services/dispositivoService";
+
+// antes de exportar o WithAuth é chamado
+export default WithAuth(Produto);
 
 export default function Dispositivos() {
   const navigate = useNavigate();

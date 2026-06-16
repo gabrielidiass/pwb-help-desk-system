@@ -2,25 +2,28 @@ import { Router } from "express";
 import CategoriaController from "./controller/CategoriaController.js";
 import DispositivoController from "./controller/DispositivoController.js";
 import TicketController from "./controller/TicketController.js";
+import { verificaJWT } from "../controllers/SegurancaController.js";
 
 const router = Router();
 
-router.post("/categorias", CategoriaController.criar);
-router.get("/categorias", CategoriaController.listar);
-router.get("/categorias/:id", CategoriaController.buscarPorId);
-router.put("/categorias/:id", CategoriaController.atualizar);
-router.delete("/categorias/:id", CategoriaController.deletar);
+router.post("/categorias", verificaJWT, CategoriaController.criar);
+router.get("/categorias", verificaJWT, CategoriaController.listar);
+router.get("/categorias/:id", verificaJWT, CategoriaController.buscarPorId);
+router.put("/categorias/:id", verificaJWT, CategoriaController.atualizar);
+router.delete("/categorias/:id", verificaJWT, CategoriaController.deletar);
 
-router.post("/dispositivos", DispositivoController.criar);
-router.get("/dispositivos", DispositivoController.listar);
-router.get("/dispositivos/:id", DispositivoController.buscarPorId);
-router.put("/dispositivos/:id", DispositivoController.atualizar);
-router.delete("/dispositivos/:id", DispositivoController.deletar);
+router.post("/dispositivos", verificaJWT, DispositivoController.criar);
+router.get("/dispositivos", verificaJWT, DispositivoController.listar);
+router.get("/dispositivos/:id", verificaJWT, DispositivoController.buscarPorId);
+router.put("/dispositivos/:id", verificaJWT, DispositivoController.atualizar);
+router.delete("/dispositivos/:id", verificaJWT, DispositivoController.deletar);
 
 router.post("/tickets", TicketController.criar);
-router.get("/tickets", TicketController.listar);
-router.get("/tickets/:id", TicketController.buscarPorId);
-router.put("/tickets/:id", TicketController.atualizar);
-router.delete("/tickets/:id", TicketController.deletar);
+router.get("/tickets",j verificaJWT, TicketController.listar);
+router.get("/tickets/:id", verificaJWT, TicketController.buscarPorId);
+router.put("/tickets/:id", verificaJWT, TicketController.atualizar);
+router.delete("/tickets/:id", verificaJWT, TicketController.deletar);
+
+router.route("/login").post(login);
 
 export default router;

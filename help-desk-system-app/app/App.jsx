@@ -6,6 +6,9 @@ import CategoriaFormulario from "./pages/CategoriaFormulario";
 import DispositivoFormulario from "./pages/DispositivoFormulario";
 import Categorias from "./pages/Categorias";
 import Dispositivos from "./pages/Dispositivos";
+import Login from "./pages/Login";
+import MenuPublico from './componentes/MenuPublico';
+import MenuPrivado from './componentes/MenuPrivado';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import cors from "cors";
 
@@ -23,6 +26,7 @@ export default function App() {
           <Route path="/tickets/:id" element={<TicketsFormulario />} />
 
           <Route path="/categorias" element={<Categorias />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/categorias/:id" element={<CategoriaFormulario />} /> 
           <Route path="/categorias/novo" element={<CategoriaFormulario />} />
 
