@@ -12,14 +12,14 @@ import {
 import Layout from "./components/Layout";
 import Login from "./components/Login";
 
-import Tickets from "./components/Tickets";
-import TicketsFormulario from "./components/TicketsFormulario";
+import Tickets from "./pages/Tickets.jsx";
+import TicketsFormulario from "./pages/TicketsFormulario.jsx";
 
-import Categorias from "./components/Categorias";
-import CategoriaFormulario from "./components/CategoriaFormulario";
+import Categorias from "./pages/Categorias";
+import CategoriaFormulario from "./pages/CategoriaFormulario.jsx";
 
-import Dispositivos from "./components/Dispositivos";
-import DispositivoFormulario from "./components/DispositivoFormulario";
+import Dispositivos from "./pages/Dispositivos.jsx";
+import DispositivoFormulario from "./pages/DispositivoFormulario.jsx";
 import MenuPrivado from "./pages/MenuPrivado";
 
 const router = createBrowserRouter([

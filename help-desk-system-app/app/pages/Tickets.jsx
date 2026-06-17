@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { getTickets, deleteTicket } from "../services/ticketService";
 
 
-function Tickets() {
+export default function Tickets() {
   const navigate = useNavigate();
   const [tickets, setTickets] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -161,4 +161,3 @@ function Tickets() {
     </div>
   );
 }
-export default WithAuth(Tickets);

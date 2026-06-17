@@ -1,4 +1,3 @@
-import WithAuth from "../security/WithAuth.jsx";
 import { useNavigate } from "react-router-dom";
 import { getCategorias } from "../services/categoriaService";
 
