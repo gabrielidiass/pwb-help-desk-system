@@ -2,7 +2,7 @@
 import jwt from "jsonwebtoken";
 
 import dotenv from "dotenv-safe";
-import { autenticaUsuarioDB } from '../usecases/segurancaUseCases.js';
+import { autenticaUsuarioDB } from '../useCases/segurancaUseCases.js';
 dotenv.config();
 
 const login = async (request, response) => {
