@@ -1,16 +1,16 @@
-import { pool } from '../config.js';
+import { sequelize } from '../config.js';
 import Usuario from '../models/Usuario.js';
 
 const autenticaUsuarioDB = async (body) => {
     try {           
         const { email, senha } = body
-        const results = await pool.query(`SELECT * FROM usuarios WHERE email = $1 AND senha = $2`,
-        [email, senha]);
-        
-        if (results.rowCount == 0) {
-            throw "Usuário ou tenha inválidos";
+        const results = await sequelize.query(`SELECT * FROM usuarios WHERE email = :email AND senha = :senha`,
+        { replacements: { email, senha }, type: sequelize.QueryTypes.SELECT });
+
+        if (results.length == 0) {
+            throw "Usuário ou senha inválidos";
         }
-        const usuario = results.rows[0];
+        const usuario = results[0];
         return new Usuario(usuario.email, usuario.tipo, usuario.telefone, usuario.nome);
     } catch (err) {
         throw "Erro ao autenticar o usuário: " + err;
