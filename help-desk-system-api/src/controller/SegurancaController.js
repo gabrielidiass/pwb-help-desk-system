@@ -30,6 +30,4 @@ export function verificaJWT(request, response, next) {
     });
 }
 
-module.exports = {
-    login, verificaJWT
-}
+export { verificaJWT, login };
