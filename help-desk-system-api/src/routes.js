@@ -24,6 +24,6 @@ router.get("/tickets/:id", verificaJWT, TicketController.buscarPorId);
 router.put("/tickets/:id", verificaJWT, TicketController.atualizar);
 router.delete("/tickets/:id", verificaJWT, TicketController.deletar);
 
-router.route("/login").post(login);
+router.route("/login").get(login);
 
 export default router;
