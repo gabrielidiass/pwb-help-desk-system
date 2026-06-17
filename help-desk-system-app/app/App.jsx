@@ -20,7 +20,8 @@ import CategoriaFormulario from "./pages/CategoriaFormulario.jsx";
 
 import Dispositivos from "./pages/Dispositivos.jsx";
 import DispositivoFormulario from "./pages/DispositivoFormulario.jsx";
-import MenuPrivado from "./pages/MenuPrivado";
+import MenuPrivado from "./pages/MenuPrivado.jsx";
+import MenuPublico from "./pages/MenuPublico.jsx";
 
 const router = createBrowserRouter([
   // Rotas públicas
