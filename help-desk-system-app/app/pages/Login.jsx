@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import { Navigate } from 'react-router-dom';
 import { gravaAutenticacao, getToken } from '../security/Autenticacao.jsx';
-import Carregando from '../../comuns/Carregando';
-import Alerta from '../../comuns/Alerta';
-import CampoEntrada from '../../comuns/CampoEntrada';
+import Carregando from '../components/Carregando.jsx';
+import Alerta from '../components/Alerta.jsx';
+import CampoEntrada from '../components/CampoEntrada.jsx';
 
 function Login() {
 
