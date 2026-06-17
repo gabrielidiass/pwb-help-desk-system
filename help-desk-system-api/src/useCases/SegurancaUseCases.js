@@ -1,4 +1,4 @@
-import { sequelize } from '../config.js';
+import { sequelize } from '../database/index.js';
 import Usuario from '../models/Usuario.js';
 
 const autenticaUsuarioDB = async (body) => {
