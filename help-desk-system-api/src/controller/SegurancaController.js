@@ -1,6 +1,6 @@
-const { autenticaUsuarioDB } = require('../usecases/segurancaUseCases');
-require("dotenv-safe").config();
-const jwt = require('jsonwebtoken');
+import "dotenv-safe/config";
+import jwt from "jsonwebtoken";
+import { autenticaUsuarioDB } from "../usecases/segurancaUseCases.js";
 
 const login = async (request, response) => {
     await autenticaUsuarioDB(request.body)

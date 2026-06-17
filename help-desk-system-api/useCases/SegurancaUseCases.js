@@ -1,5 +1,5 @@
-const { pool } = require('../config')
-const Usuario = require('../entities/usuario')
+import { pol } from '../config'
+import Usuario from '../entities/usuario'
 
 const autenticaUsuarioDB = async (body) => {
     try {           
