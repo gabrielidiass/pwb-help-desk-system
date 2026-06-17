@@ -1,10 +1,23 @@
 import axios from "axios";
+import { getToken } from "../security/Autenticacao"
 
 const api = axios.create({
   baseURL: import.meta.env.VITE_API_URL,
   headers: {
     "Content-Type": "application/json",
   },
+});
+
+
+
+api.interceptors.request.use((config) => {
+  const token = getToken();
+
+  if (token) {
+    config.headers.authorization = `Bearer ${token}`;
+  }
+
+  return config;
 });
 
 export default api;

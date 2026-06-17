@@ -2,7 +2,7 @@ import { Router } from "express";
 import CategoriaController from "./controller/CategoriaController.js";
 import DispositivoController from "./controller/DispositivoController.js";
 import TicketController from "./controller/TicketController.js";
-import { verificaJWT } from "../controllers/SegurancaController.js";
+import { verificaJWT } from "./controller/SegurancaController.js";
 
 const router = Router();
 

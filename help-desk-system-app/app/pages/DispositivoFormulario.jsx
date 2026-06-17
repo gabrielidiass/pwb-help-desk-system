@@ -1,5 +1,5 @@
 import WithAuth from "../../../seguranca/WithAuth";
- from "react";
+
 import { useNavigate, useParams } from "react-router-dom";
 import {
   getDispositivoById,
@@ -8,9 +8,7 @@ import {
 } from "../services/dispositivoService";
 
 // antes de exportar o WithAuth é chamado
-export default WithAuth(Produto);
-
-export default function DispositivoForm() {
+function DispositivoForm() {
   const navigate = useNavigate();
   const { id } = useParams();
 
@@ -112,3 +110,4 @@ export default function DispositivoForm() {
     </div>
   );
 }
+export default WithAuth(DispositivoForm);

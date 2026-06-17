@@ -1,5 +1,4 @@
 import WithAuth from "../../../seguranca/WithAuth";
- from "react";
 import { useNavigate } from "react-router-dom";
 import { getDispositivos } from "../services/dispositivoService";
 

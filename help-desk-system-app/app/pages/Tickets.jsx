@@ -1,12 +1,9 @@
 import WithAuth from "../../../seguranca/WithAuth";
- from "react";
 import { useNavigate } from "react-router-dom";
 import { getTickets, deleteTicket } from "../services/ticketService";
 
-// antes de exportar o WithAuth é chamado
-export default WithAuth(Produto);
 
-export default function Tickets() {
+function Tickets() {
   const navigate = useNavigate();
   const [tickets, setTickets] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -164,3 +161,4 @@ export default function Tickets() {
     </div>
   );
 }
+export default WithAuth(Tickets);

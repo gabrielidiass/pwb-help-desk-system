@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { getCategoriaById, createCategoria, updateCategoria } from "../services/categoriaService";
+import WithAuth from "../../../seguranca/WithAuth";
 
-export default function CategoriaFormulario() {
+function CategoriaFormulario() {
   const { id } = useParams();
   const navigate = useNavigate();
   const isEditing = Boolean(id);
@@ -96,3 +97,4 @@ export default function CategoriaFormulario() {
     </div>
   );
 }
+export default WithAuth(CategoriaFormulario);

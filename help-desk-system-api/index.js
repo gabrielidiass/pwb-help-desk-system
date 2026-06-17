@@ -1,4 +1,7 @@
 // index.js
+import dotenv from "dotenv";
+dotenv.config();
+
 import express from "express";
 import sequelize from "./src/database/index.js";
 import routes from "./src/routes.js";

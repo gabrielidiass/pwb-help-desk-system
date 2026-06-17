@@ -1,41 +1,109 @@
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "@popperjs/core/dist/cjs/popper.js";
+import "bootstrap/dist/js/bootstrap.min.js";
+import "bootstrap-icons/font/bootstrap-icons.css";
+
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Navigate,
+} from "react-router-dom";
+
 import Layout from "./components/Layout";
-import Tickets from "./pages/Tickets";
-import TicketsFormulario from "./pages/TicketsFormulario";
-import CategoriaFormulario from "./pages/CategoriaFormulario";
-import DispositivoFormulario from "./pages/DispositivoFormulario";
-import Categorias from "./pages/Categorias";
-import Dispositivos from "./pages/Dispositivos";
-import Login from "./pages/Login";
-import MenuPublico from './componentes/MenuPublico';
-import MenuPrivado from './componentes/MenuPrivado';
-import * as serviceWorkerRegistration from './serviceWorkerRegistration';
-import cors from "cors";
+import Login from "./components/Login";
 
-//app.use(cors());
+import Tickets from "./components/Tickets";
+import TicketsFormulario from "./components/TicketsFormulario";
 
-serviceWorkerRegistration.register();
-export default function App() {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Navigate to="/tickets" />} />
-        <Route element={<Layout />}>
-          <Route path="/tickets" element={<Tickets />} />
-          <Route path="/tickets/novo" element={<TicketsFormulario />} />
-          <Route path="/tickets/:id" element={<TicketsFormulario />} />
+import Categorias from "./components/Categorias";
+import CategoriaFormulario from "./components/CategoriaFormulario";
 
-          <Route path="/categorias" element={<Categorias />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/categorias/:id" element={<CategoriaFormulario />} /> 
-          <Route path="/categorias/novo" element={<CategoriaFormulario />} />
+import Dispositivos from "./components/Dispositivos";
+import DispositivoFormulario from "./components/DispositivoFormulario";
+import MenuPrivado from "./pages/MenuPrivado";
 
-          <Route path="/dispositivos" element={<Dispositivos />} />
-          <Route path="/dispositivos/:id" element={<DispositivoFormulario />} />
-          <Route path="/dispositivos/novo" element={<DispositivoFormulario />} />
-        </Route>
-        <Route path="*" element={<h1>404 - Página não encontrada</h1>} />
-      </Routes>
-    </BrowserRouter>
-  );
+const router = createBrowserRouter([
+  // Rotas públicas
+  {
+    path: "/",
+    element: <MenuPublico />,
+    children: [
+      {
+        element: <Layout />,
+        children: [
+          {
+            index: true,
+            element: <Navigate to="/tickets" />,
+          },
+          {
+            path: "tickets",
+            element: <Tickets />,
+          },
+          {
+            path: "categorias",
+            element: <Categorias />,
+          },
+          {
+            path: "dispositivos",
+            element: <Dispositivos />,
+          },
+        ],
+      },
+    ],
+  },
+
+  // Rotas privadas
+  {
+    path: "/",
+    element: <MenuPrivado />,
+    children: [
+      {
+        element: <Layout />,
+        children: [
+          {
+            path: "tickets/novo",
+            element: <TicketsFormulario />,
+          },
+          {
+            path: "tickets/:id",
+            element: <TicketsFormulario />,
+          },
+
+          {
+            path: "categorias/novo",
+            element: <CategoriaFormulario />,
+          },
+          {
+            path: "categorias/:id",
+            element: <CategoriaFormulario />,
+          },
+
+          {
+            path: "dispositivos/novo",
+            element: <DispositivoFormulario />,
+          },
+          {
+            path: "dispositivos/:id",
+            element: <DispositivoFormulario />,
+          },
+        ],
+      },
+    ],
+  },
+
+  {
+    path: "/login",
+    element: <Login />,
+  },
+
+  {
+    path: "*",
+    element: <h1>404 - Página não encontrada</h1>,
+  },
+]);
+
+function App() {
+  return <RouterProvider router={router} />;
 }
+
+export default App;
