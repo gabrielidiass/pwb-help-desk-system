@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { getCategorias } from "../services/categoriaService";
-
+import { useState, useEffect } from "react";
 
 export default function Categorias() {
   const navigate = useNavigate();

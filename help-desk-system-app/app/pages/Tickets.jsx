@@ -1,7 +1,7 @@
 import WithAuth from "../security/WithAuth.jsx";
 import { useNavigate } from "react-router-dom";
 import { getTickets, deleteTicket } from "../services/ticketService";
-
+import { useState, useEffect } from "react";
 
 export default function Tickets() {
   const navigate = useNavigate();

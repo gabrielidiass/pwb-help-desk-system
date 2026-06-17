@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { getDispositivos } from "../services/dispositivoService";
+import { useState, useEffect } from "react";
 
 export default function Dispositivos() {
   const navigate = useNavigate();
