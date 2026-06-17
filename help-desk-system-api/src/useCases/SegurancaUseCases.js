@@ -1,5 +1,5 @@
-import { pol } from '../config'
-import Usuario from '../entities/usuario'
+import { pool } from '../config.js';
+import Usuario from '../models/Usuario.js';
 
 const autenticaUsuarioDB = async (body) => {
     try {           
