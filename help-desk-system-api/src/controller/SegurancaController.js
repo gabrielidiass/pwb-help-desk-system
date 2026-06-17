@@ -1,6 +1,6 @@
 
 import jwt from "jsonwebtoken";
-import { autenticaUsuarioDB } from "./useCases/SegurancaUseCases.js";
+import { autenticaUsuarioDB } from "../../useCases/SegurancaUseCases";
 import dotenv from "dotenv-safe";
 
 dotenv.config();
