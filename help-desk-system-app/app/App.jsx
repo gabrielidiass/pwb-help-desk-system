@@ -9,8 +9,8 @@ import {
   Navigate,
 } from "react-router-dom";
 
-import Layout from "./components/Layout";
-import Login from "./components/Login";
+import Layout from "./components/Layout.jsx";
+import Login from "./components/Login.jsx";
 
 import Tickets from "./pages/Tickets.jsx";
 import TicketsFormulario from "./pages/TicketsFormulario.jsx";
