@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import { Navigate } from 'react-router-dom';
-import { gravaAutenticacao, getToken } from '../../../seguranca/Autenticacao';
-import Carregando from '../../comuns/Carregando';
-import Alerta from '../../comuns/Alerta';
-import CampoEntrada from '../../comuns/CampoEntrada';
+import { gravaAutenticacao, getToken } from '../security/Autenticacao.jsx';
+import Carregando from "./Carregando.jsx";
+import Alerta from "./Alerta.jsx";
+import CampoEntrada from "./CampoEntrada.jsx";
 
 function Login() {
 
@@ -23,7 +23,7 @@ function Login() {
                 senha: senha
             };
             setCarregando(true);
-            await fetch(`${process.env.REACT_APP_ENDERECO_API}/login`, {
+            await fetch(`${import.meta.env.VITE_ENDERECO_API}/login`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(body),

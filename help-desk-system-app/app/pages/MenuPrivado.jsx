@@ -3,7 +3,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { NavLink, Outlet } from 'react-router-dom';
-import { getUsuario, logout } from '../seguranca/Autenticacao';
+import { getUsuario, logout } from '../security/Autenticacao';
 
 function MenuPrivado() {
 

@@ -1,4 +1,4 @@
-import WithAuth from "../../../seguranca/WithAuth";
+import WithAuth from "../security/WithAuth.jsx";
 
 import { useNavigate, useParams } from "react-router-dom";
 import {

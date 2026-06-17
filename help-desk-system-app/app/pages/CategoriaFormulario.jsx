@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { getCategoriaById, createCategoria, updateCategoria } from "../services/categoriaService";
-import WithAuth from "../../../seguranca/WithAuth";
+import WithAuth from "../security/WithAuth.jsx";
 
 function CategoriaFormulario() {
   const { id } = useParams();
