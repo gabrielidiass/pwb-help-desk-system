@@ -17,7 +17,7 @@ const login = async (request, response) => {
 }
 
 // verificação do token
-export function verificaJWT(request, response, next) {
+function verificaJWT(request, response, next) {
     const token = request.headers['authorization'];
     if (!token) return response.status(401).json({ auth: false, message: 'Nenhum token recebido.' });
 
